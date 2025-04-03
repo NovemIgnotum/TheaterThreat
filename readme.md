@@ -8,7 +8,6 @@ Une application délibérément vulnérable pour apprendre la cybersécurité.
 ### Étapes pour lancer le site :
 1. **Cloner le projet :**
     ```bash
-    git clone https://github.com/votre-repo/theaterthreat-vulnerable.git
     cd theaterthreat-vulnerable
     ```
 
