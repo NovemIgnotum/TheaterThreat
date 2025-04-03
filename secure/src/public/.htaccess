@@ -1,0 +1,35 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    
+    # Blocage des accès directs aux dossiers sensibles
+    RewriteRule ^(includes|templates|docker|config) - [F,L,NC]
+    
+    # Protection contre les injections de fichiers
+    RewriteCond %{REQUEST_URI} !^/public/
+    RewriteRule \.(php|sql|ini|log)$ - [F,L,NC]
+    
+    # Redirection HTTPS (décommenter en prod)
+    # RewriteCond %{HTTPS} off
+    # RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+    
+    # Front Controller
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^ index.php [L]
+</IfModule>
+
+# Headers de sécurité
+<IfModule mod_headers.c>
+    Header set X-Content-Type-Options "nosniff"
+    Header set X-Frame-Options "DENY"
+    Header set X-XSS-Protection "1; mode=block"
+    Header set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
+
+# Désactivation de l'indexation
+Options -Indexes
+
+# Protection contre le hotlinking
+<IfModule mod_rewrite.c>
+    RewriteCond %{HTTP_REFERER} !^$
+    RewriteCond %{HTTP_REFERER} !^https?

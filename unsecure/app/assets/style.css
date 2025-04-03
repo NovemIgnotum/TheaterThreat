@@ -1,0 +1,29 @@
+body {
+    font-family: Arial, sans-serif;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.dvd-card {
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 5px;
+}
+
+.hint {
+    background-color: #fff3cd;
+    padding: 10px;
+    margin-top: 15px;
+    border-radius: 5px;
+}
+
+form {
+    margin: 20px 0;
+}
+
+input, button {
+    padding: 8px;
+    margin: 5px 0;
+}
